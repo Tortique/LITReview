@@ -29,4 +29,6 @@ urlpatterns = [
     path('signup', authentication.views.signup_page, name='signup'),
     path('logout/', authentication.views.logout_user, name='logout'),
     path('home/', litr.views.home, name='home'),
+    path('posts/', litr.views.posts, name='posts'),
+    path('subscriptions/', litr.views.subscriptions, name='subscriptions'),
 ]
