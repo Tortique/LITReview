@@ -1,4 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-    <p>Vous êtes connecté !</p>
+    <div>
+        <button> <a href="{% url 'create_ticket' %}">Demander une critique</a></button>
+        <button> <a href="{% url 'create_review' %}">Créer une critique</a></button>
+    </div>
+    <div>
+        {% for ticket in tickets %}
+        <div>
+            <p>{{ ticket.title }}</p>
+            {% if ticket.image %}
+                <img src="{{ ticket.image.url }}">
+            {% endif %}
+        </div>
+    {% endfor %}
+    </div>
 {% endblock content %}
