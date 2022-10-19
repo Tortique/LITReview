@@ -1,4 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-    <p>Vous êtes connecté !</p>
+    <h2>Créer une review</h2>
+    <form method="post" enctype="multipart/form-data">
+        {{ ticket_form.as_p }}
+        {{ review_form.as_p }}
+        {% csrf_token %}
+        <button type="submit">Publier</button>
+    </form>
 {% endblock content %}

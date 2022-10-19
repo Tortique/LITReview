@@ -6,10 +6,12 @@
         <div class="toggle-nav-sidebar">
             {% if user.is_authenticated %}
             <h1>LITReview</h1>
-            <p><a href="{% url 'home' %}">Flux</a></p>
-            <p><a href="{% url 'posts' %}">Posts</a></p>
-            <p><a href="{% url 'subscriptions' %}">Abonnements</a></p>
-            <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
+                <p class="navbar-menu">
+                    <a href="{% url 'home' %}">Flux</a>
+                    <a href="{% url 'posts' %}">Posts</a>
+                    <a href="{% url 'subscriptions' %}">Abonnements</a>
+                    <a href="{% url 'logout' %}">Se déconnecter</a>
+                </p>
         {% endif %}
         </div>
         <div class="main">
