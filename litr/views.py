@@ -2,6 +2,8 @@ from django.contrib.auth.decorators import login_required
 from . import forms, models
 from django.shortcuts import render, redirect, get_object_or_404
 
+from .models import UserFollows
+
 
 @login_required
 def home(request):
@@ -12,11 +14,6 @@ def home(request):
 @login_required
 def posts(request):
     return render(request, 'litr/posts.html')
-
-
-@login_required
-def subscriptions(request):
-    return render(request, 'litr/subscriptions.html')
 
 
 @login_required
@@ -96,3 +93,17 @@ def edit_review(request, review_id):
         'delete_form': delete_form,
     }
     return render(request, 'litr/modify_review.html', context=context)
+
+
+@login_required
+def follow_users(request):
+    users_list = UserFollows.objects.filter(user=request.user)
+    form = forms.FollowUsersForm(request_user=request.user, former_followed_user=users_list)
+    if request.method == 'POST':
+        form = forms.FollowUsersForm(request.POST, request_user=request.user, former_followed_user=users_list)
+        if form.is_valid():
+            followed = form.cleaned_data.get("followed_user")
+            user = request.user
+            UserFollows.objects.create(user=user, followed_user=followed)
+            return redirect('home')
+    return render(request, 'litr/subscriptions.html', context={'form': form})
