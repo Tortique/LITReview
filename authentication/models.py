@@ -3,5 +3,4 @@ from django.db import models
 
 
 class User(AbstractUser):
-    follows = models.ManyToManyField('self', symmetrical=False)
-
+    pass
