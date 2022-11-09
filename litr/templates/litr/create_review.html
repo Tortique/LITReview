@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Créer une review</h2>
+    <div>
+        <h2>Créer une critique</h2>
+        {% include 'partials/ticket_snippet.html' with ticket=ticket_form %}
+    </div>
     <form method="post" enctype="multipart/form-data">
         {{ ticket_form.as_p }}
+
         {{ review_form.as_p }}
         {% csrf_token %}
         <button type="submit">Publier</button>

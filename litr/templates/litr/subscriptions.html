@@ -1,9 +1,44 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    <h2>Suivre des utilisateurs</h2>
-    <form method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <button type="submit" >Confirmer</button>
-    </form>
+    <div class="subscribe">
+        <h2>Suivre des utilisateurs</h2>
+        <form method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit" >Confirmer</button>
+        </form>
+    </div>
+    <div class="subscription">
+        <h2>Abonnements</h2>
+        <br/>
+        <table class="subscription-list">
+            {% for subs in form_subscription %}
+                <tr>
+                    <td>{{ subs.followed_user }}</td>
+                    <td>
+                        <form method="POST" action="{% url 'unfollow_users' subs.id%}">
+                            {% csrf_token %}
+                            <button class="btn btn-default" type="submit">Désabonner</button>
+                        </form>
+                    </td>
+                </tr>
+            {% empty %}
+                <p>Aucun abonnement</p>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="followers">
+        <h2>Abonnés</h2>
+        <br/>
+        <table class="follower_list">
+            {% for follower in form_followers %}
+                <tr>
+                    <td>{{ follower.user }}</td>
+                </tr>
+            {% empty %}
+                <p>Aucun abonné</p>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock content %}

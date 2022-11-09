@@ -1,17 +1,20 @@
 {% extends 'base.html' %}
+{% load post_extras %}
+{% load static %}
 {% block content %}
     <div>
         <button> <a href="{% url 'create_ticket' %}">Demander une critique</a></button>
         <button> <a href="{% url 'create_review' %}">Créer une critique</a></button>
     </div>
-    <div>
-        {% for ticket in tickets %}
-        <div>
-            <p>{{ ticket.title }}</p>
-            {% if ticket.image %}
-                <img src="{{ ticket.image.url }}">
+    <h2>Votre flux</h2>
+    <div class="grid-container">
+        {% for post in posts %}
+            {% if post|model_type == 'Review' %}
+                {% include 'partials/review_snippet.html' with review=post %}
             {% endif %}
-        </div>
-    {% endfor %}
+            {% if post|model_type == 'Ticket' %}
+                {% include 'partials/ticket_snippet.html' with ticket=post %}
+            {% endif %}
+        {% endfor %}
     </div>
 {% endblock content %}

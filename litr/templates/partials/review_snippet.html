@@ -1,0 +1,46 @@
+{% block content %}
+    {% load static %}
+    {% load post_extras %}
+
+<div class="post">
+    <div class="review">
+        {% if review.user == request.user %} Vous avez {% else %} {{ review.user }} a {% endif %} publié une critique
+    <div class="review-date">
+        {{ review.time_created }}
+    </div>
+    <h3 class="review-content"> {{ review.headline }}</h3>
+    <p class="rating">
+        {% for value in 5|rating_range %}
+            {% if value <= post.rating %}
+                <img class="star-icon" src="{% static '/img/filled-star.svg' %}"/>
+            {% else %}
+                <img class="star-icon" src="{% static '/img/empty-star.svg' %}"/>
+            {% endif %}
+        {% endfor %}
+    </p>
+    <p class="review-content">{{ ticket.body }}</p>
+    </div>
+    <div class="ticket-for-review">
+        Ticket - {{ review.ticket.user }}
+        <p> {{ review.ticket.title }}</p>
+        {% if review.ticket.image %}
+        <div class="review-ticket-img">
+            <img src="{{ review.ticket.image }}">
+        </div>
+        {% endif %}
+    </div>
+    {% if request.get_full_path == "/posts/" %}
+        <div class="action-button">
+            <form method="GET" action="{% url 'modify_review' post.id  %}">
+                <button class="btn btn-default" type="submit">Modifier</button>
+            </form>
+        </div>
+        <div class="action-button">
+            <form method="GET" action="{% url 'delete_review' post.id  %}">
+                <button class="btn btn-default" type="submit">Supprimer</button>
+            </form>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock content %}

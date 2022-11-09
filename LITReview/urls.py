@@ -35,8 +35,12 @@ urlpatterns = [
     path('subscriptions/', litr.views.follow_users, name='subscriptions'),
     path('create/ticket/', litr.views.create_ticket, name='create_ticket'),
     path('create/review/', litr.views.create_review_and_ticket, name='create_review'),
-    path('<int:ticket_id>/edit', litr.views.edit_ticket, name='modify_ticket'),
-    path('<int:review_id>/edit', litr.views.edit_review, name='modify_review'),
+    path('create/<int:ticket_id>/review', litr.views.create_review, name='create_review'),
+    path('<int:ticket_id>/edit/ticket', litr.views.edit_ticket, name='modify_ticket'),
+    path('<int:review_id>/edit/review', litr.views.edit_review, name='modify_review'),
+    path('<int:ticket_id>/delete/ticket', litr.views.delete_ticket, name='delete_ticket'),
+    path('<int:subs_id>/delete/follow', litr.views.unfollow_users, name='unfollow_users'),
+    path('<int:review_id>/delete/review', litr.views.delete_review, name='delete_review'),
 ]
 
 if settings.DEBUG:

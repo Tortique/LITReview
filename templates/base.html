@@ -1,11 +1,13 @@
+{% load static %}
 <html>
     <head>
         <title>LITReview</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'app.css' %}">
     </head>
     <body>
-        <div class="toggle-nav-sidebar">
+        <div class="navbar">
             {% if user.is_authenticated %}
-            <h1>LITReview</h1>
+            <h1 class="navbar-title">LITReview</h1>
                 <p class="navbar-menu">
                     <a href="{% url 'home' %}">Flux</a>
                     <a href="{% url 'posts' %}">Posts</a>

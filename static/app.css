@@ -1,0 +1,83 @@
+* {
+  margin: 5px;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: medium;
+  font-variant-caps: normal;
+  background-color: rgb(253, 253, 254);
+}
+
+.navbar {
+    display: flex;
+     width: 100%;
+ }
+
+.navbar-title {
+    width: 70%;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: lighter;
+    font-variant-caps: small-caps;
+}
+
+.navbar-menu {
+    width: 30%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: right;
+}
+
+.main {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 50px;
+    text-align: center;
+}
+.post {
+    width: 50%;
+    margin-left: 25%;
+    border: solid;
+}
+.review {
+    padding: 5px;
+    width: 95%;
+    margin-left: 2.5%;
+    text-align: left;
+    border: solid;
+}
+
+.review-date,
+.ticket-date{
+    font-size: 0.75em;
+    text-align: right;
+}
+
+.rating > .star-icon {
+    width: 20px;
+}
+
+.ticket,
+.ticket-for-review {
+    padding: 5px;
+    width: 95%;
+    margin-left: 2.5%;
+    text-align: left;
+}
+
+.ticket-for-review {
+    border: solid;
+}
+
+.action-button {
+    text-align: right;
+}
+
+button {
+    padding: 5px;
+    border-radius: 8px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}

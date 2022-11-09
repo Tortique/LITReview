@@ -25,6 +25,9 @@ class Ticket(models.Model):
         super().save(*args, **kwargs)
         self.resize_image()
 
+    def __str__(self):
+        return f'{self.title}'
+
 
 class Review(models.Model):
     ticket = models.ForeignKey(to=Ticket, on_delete=models.CASCADE)
@@ -47,6 +50,3 @@ class UserFollows(models.Model):
                 check=~models.Q(user=models.F("followed_user")),
             ),
         ]
-
-    def __str__(self):
-        return f'{self.user} suit {self.followed_user}'
