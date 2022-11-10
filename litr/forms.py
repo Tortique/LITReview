@@ -14,7 +14,14 @@ class TicketForm(forms.ModelForm):
         model = models.Ticket
         fields = ['title', 'description', 'image']
 
-    title = forms.CharField(label="Titre")
+        widgets = {
+            'title': forms.TextInput(attrs={'placeholder': 'Titre'}),
+            'description': forms.Textarea(),
+        }
+        labels = {
+            'title': "Titre",
+            'description': "Description"
+        }
 
 
 class DeleteTicketForm(forms.Form):
@@ -25,6 +32,15 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = models.Review
         fields = ['headline', 'rating', 'body']
+        widgets = {
+            'headline': forms.TextInput(attrs={'placeholder': 'Titre'}),
+            'rating': forms.RadioSelect,
+        }
+        labels = {
+            'headline': "Titre",
+            'rating': "Note",
+            'body': "Commentaire"
+        }
 
 
 class DeleteReviewForm(forms.Form):

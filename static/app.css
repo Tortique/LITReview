@@ -81,3 +81,34 @@ button {
 h2 {
     margin-bottom: 10px;
 }
+
+p {
+    text-align: left;
+}
+
+input{
+    display: block;
+    width: 100%;
+    height: 35px;
+    background-color: revert;
+}
+
+textarea {
+    display: block;
+    width: 100%;
+}
+
+#id_rating {
+    display: flex;
+    justify-content: flex-start;
+}
+#id_rating > div > label > input {
+    cursor: pointer;
+    width: revert;
+    height: auto;
+    display: inline;
+}
+
+#id_rating > div > label {
+    text-align: center;
+}
