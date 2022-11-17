@@ -3,7 +3,7 @@
 ## Installation
 
 1.  Cloner le répertoire github
-    `git clone https://github.com/dev-KC20/ocr-p9.git`
+    `git clone https://github.com/Tortique/LITReview.git`
 
 2. Créer un environnement virtuel python
     `env python -m venv env`
