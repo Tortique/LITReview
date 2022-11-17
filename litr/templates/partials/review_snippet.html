@@ -10,8 +10,8 @@
     </div>
     <h3 class="review-content"> {{ review.headline }}</h3>
     <p class="rating">
-        {% for value in 5|rating_range %}
-            {% if value <= post.rating %}
+        {% for value in range %}
+            {% if value < review.rating %}
                 <img class="star-icon" src="{% static '/img/filled-star.svg' %}"/>
             {% else %}
                 <img class="star-icon" src="{% static '/img/empty-star.svg' %}"/>
@@ -25,7 +25,7 @@
         <p> {{ review.ticket.title }}</p>
         {% if review.ticket.image %}
         <div class="review-ticket-img">
-            <img src="{{ review.ticket.image }}">
+            <img src="{{ review.ticket.image.url }}">
         </div>
         {% endif %}
     </div>

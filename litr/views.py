@@ -1,6 +1,7 @@
 from itertools import chain
 
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.db.models import Q
 
 from . import forms, models
@@ -20,7 +21,11 @@ def home(request):
 
     posts = sorted(chain(reviews, tickets), key=lambda post: post.time_created, reverse=True)
 
-    context = {"posts": posts}
+    paginator = Paginator(posts, 5)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {"page_obj": page_obj, "range": range(5)}
     return render(request, 'litr/home.html', context=context)
 
 
@@ -31,7 +36,11 @@ def posts(request):
 
     posts = sorted(chain(reviews, tickets), key=lambda post: post.time_created, reverse=True)
 
-    context = {"posts": posts}
+    paginator = Paginator(posts, 5)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {"page_obj": page_obj}
     return render(request, 'litr/posts.html', context=context)
 
 

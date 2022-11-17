@@ -30,11 +30,12 @@ class DeleteTicketForm(forms.Form):
 
 class ReviewForm(forms.ModelForm):
     class Meta:
+        CHOICES = [(i, i) for i in range(6)]
         model = models.Review
         fields = ['headline', 'rating', 'body']
         widgets = {
             'headline': forms.TextInput(attrs={'placeholder': 'Titre'}),
-            'rating': forms.RadioSelect,
+            'rating': forms.RadioSelect(choices=CHOICES),
         }
         labels = {
             'headline': "Titre",
