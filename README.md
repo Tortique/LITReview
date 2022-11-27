@@ -6,7 +6,7 @@
     `git clone https://github.com/Tortique/LITReview.git`
 
 2. Créer un environnement virtuel python
-    `env python -m venv env`
+    `python -m venv env`
 
 3.  Activer un environnement virtuel python
     `env\scripts\activate.bat`
