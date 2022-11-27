@@ -9,7 +9,7 @@
     `env python -m venv env`
 
 3.  Activer un environnement virtuel python
-    `env env\scripts\activate.bat`
+    `env\scripts\activate.bat`
 
 4.  Installer les pré-requis
     `pip install -r requirements.txt`
