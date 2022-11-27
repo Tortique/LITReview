@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Se Désabonner</h1>
+    <p> Etes-vous sûr de vouloir vous désabonner ?</p>
+    <form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Se Désabonner">
+    </form>
+{% endblock content %}

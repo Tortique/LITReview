@@ -1,0 +1,40 @@
+{% block content %}
+{% load post_extras %}
+
+<div class="post">
+    <div class="ticket">
+    {% if ticket.user == request.user %} Vous avez {% else %} {{ ticket.user }} a {% endif %} demandé une critique
+    <div class="ticket-date">
+        {{ ticket.time_created }}
+    </div>
+    <div class="ticket-content">
+        <p>{{ ticket.title }}</p>
+        <p>{{ ticket.description }}</p>
+        {% if ticket.image %}
+            <div class="ticket-img">
+                <img src="{{ ticket.image.url }}">
+            </div>
+        {% endif %}
+    </div>
+    {% if request.get_full_path == "/home/" %}
+    <div class="action-button">
+        <form method="GET" action="{% url 'create_review' post.id  %}">
+            <button class="btn btn-default" type="submit">Créer une critique</button>
+        </form>
+    </div>
+    {% endif %}
+    {% if request.get_full_path == "/posts/" %}
+        <div class="action-button">
+            <form method="GET" action="{% url 'modify_ticket' post.id  %}">
+                <button class="btn btn-default" type="submit">Modifier</button>
+            </form>
+        </div>
+        <div class="action-button">
+            <form method="GET" action="{% url 'delete_ticket' post.id  %}">
+                <button class="btn btn-default" type="submit">Supprimer</button>
+            </form>
+        </div>
+    {% endif %}
+</div>
+</div>
+{% endblock content %}

@@ -1,12 +1,23 @@
+{% load static %}
 <html>
     <head>
         <title>LITReview</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'app.css' %}">
     </head>
     <body>
-        <h1>LITReview</h1>
-        {% block content %}{% endblock content %}
-        {% if user.is_authenticated %}
-            <p>Vous êtes connecté en tant que {{ request.user }}. <a href="{% url 'logout' %}">Se déconnecter</a></p>
+        <div class="navbar">
+            {% if user.is_authenticated %}
+            <h1 class="navbar-title">LITReview</h1>
+                <p class="navbar-menu">
+                    <a href="{% url 'home' %}">Flux</a>
+                    <a href="{% url 'posts' %}">Posts</a>
+                    <a href="{% url 'subscriptions' %}">Abonnements</a>
+                    <a href="{% url 'logout' %}">Se déconnecter</a>
+                </p>
         {% endif %}
+        </div>
+        <div class="main">
+            {% block content %}{% endblock content %}
+        </div>
     </body>
 </html>

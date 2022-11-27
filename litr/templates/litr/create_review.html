@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div>
+        <h2>Créer une critique</h2>
+    </div>
+    <form method="post" enctype="multipart/form-data">
+    <div>
+        {% if request.get_full_path == "/create/review/" %}
+        {{ ticket_form.as_p }}
+        {% else %}
+        {% include 'partials/ticket_snippet.html' with ticket=ticket_form %}
+        {% endif %}
+    </div>
+    <div>
+        {{ review_form.as_p }}
+        {% csrf_token %}
+    </div>
+        <button type="submit">Publier</button>
+    </form>
+{% endblock content %}
